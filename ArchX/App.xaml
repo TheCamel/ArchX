@@ -1,0 +1,18 @@
+﻿<Application x:Class="ArchX.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="Views/MainView.xaml">
+	<Application.Resources>
+
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="pack://application:,,,/Fluent;Component/Themes/Office2013/Generic.xaml" />
+				
+				<ResourceDictionary Source="pack://application:,,,/ArchX.Controls;Component/themes/generic.xaml" />
+				<ResourceDictionary Source="/ArchX;Component/Resources/XAML/Common.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+			
+		</ResourceDictionary>
+
+	</Application.Resources>
+</Application>

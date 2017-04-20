@@ -1,0 +1,12 @@
+﻿<Layer:LayerItemViewModelCollection xmlns:Layer="clr-namespace:ArchX.Controls.Layer" Capacity="40">
+	<Layer:LayerItemViewModel IsVisible="True" IsLocked="False" Name="Vestibulum nam sed"/>
+	<Layer:LayerItemViewModel IsVisible="True" IsLocked="False" Name="Class adipiscing curabitur aliquam curae"/>
+	<Layer:LayerItemViewModel IsVisible="True" IsLocked="False" Name="Dis donec phasellus"/>
+	<Layer:LayerItemViewModel IsVisible="True" IsLocked="False" Name="Maecenas aenean"/>
+	<Layer:LayerItemViewModel IsVisible="True" IsLocked="False" Name="Praesent consequat parturient"/>
+	<Layer:LayerItemViewModel IsVisible="True" IsLocked="False" Name="Etiam convallis integer est"/>
+	<Layer:LayerItemViewModel IsVisible="True" IsLocked="False" Name="Fusce lorem vestibulum dignissim quisque"/>
+	<Layer:LayerItemViewModel IsVisible="True" IsLocked="False" Name="Elementum vestibulum accumsan"/>
+	<Layer:LayerItemViewModel IsVisible="True" IsLocked="False" Name="Bibendum hac"/>
+	<Layer:LayerItemViewModel IsVisible="True" IsLocked="False" Name="Facilisis fermentum"/>
+</Layer:LayerItemViewModelCollection>

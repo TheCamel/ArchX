@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+	<ResourceDictionary.MergedDictionaries>
+		<ResourceDictionary Source="/ArchX.Controls;Component/themes/EditableTextBlock.xaml" />
+		<ResourceDictionary Source="/ArchX.Controls;Component/themes/Ruler.xaml" />
+		<ResourceDictionary Source="/ArchX.Controls;Component/themes/Layer.xaml" />
+	</ResourceDictionary.MergedDictionaries>
+	
+	
+</ResourceDictionary>

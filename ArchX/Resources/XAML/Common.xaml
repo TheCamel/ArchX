@@ -1,0 +1,25 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:Views="clr-namespace:ArchX.Views"
+                    xmlns:ViewModels="clr-namespace:ArchX.ViewModels"
+					>
+
+	<ResourceDictionary.MergedDictionaries>
+
+		<!-- Designer controls -->
+		
+
+	</ResourceDictionary.MergedDictionaries>
+
+	<!-- ################################################################################# -->
+	<!--  TOOL DATA TEMPLATES -->
+	
+	<!-- ################################################################################# -->
+	<!--  DOCUMENTS DATA TEMPLATES -->
+
+	<!--  This template applies a cbr/cbz document in the main window -->
+	<DataTemplate DataType="{x:Type ViewModels:PlanViewModel}">
+		<Views:PlanView />
+	</DataTemplate>
+
+</ResourceDictionary>

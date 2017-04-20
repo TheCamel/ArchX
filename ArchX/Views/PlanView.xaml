@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="ArchX.Views.PlanView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			 xmlns:Ruler="clr-namespace:ArchX.Controls;assembly=ArchX.Controls"
+			 xmlns:localControl="clr-namespace:ArchX.Components.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="600">
+
+	<Ruler:Ruler x:Name="ctrlRuler" Grid.Row="2"
+					 CurrentPosition="{Binding Path=CurrentPosition, ElementName=drawing, Mode=OneWay}"
+					 CurrentSnapPosition="{Binding Path=CurrentSnapPosition, ElementName=drawing, Mode=OneWay}"
+					 ActiveSurface="{Binding Surface, Mode=TwoWay}"
+					 ShowMousePosition="{Binding ShowMousePosition, Mode=TwoWay}"
+					 ShowGuides="{Binding ShowGuides, Mode=TwoWay}"
+					 IsProtected="{Binding IsProtected, Mode=TwoWay}"
+					 IsSnapping="{Binding IsSnapping, Mode=TwoWay}"
+					 >
+		<Ruler:Ruler.DrawingSurface>
+			<localControl:DrawingCanvas x:Name="drawing" ActualScale="1.0" Background="Transparent"
+							ActiveSurface="{Binding Surface, Mode=TwoWay}"
+							CurrentTool="{Binding Tool}"
+							CurrentRuler="{Binding ElementName=ctrlRuler, Path=.}"
+							IsSnapping="{Binding IsSnapping, Mode=OneWayToSource}"
+							CurrentPosition="{Binding CurrentPosition, Mode=OneWayToSource}"
+										>
+				<localControl:DrawingCanvas.ContextMenu>
+					<ContextMenu>
+						<MenuItem Header="test" />
+					</ContextMenu>
+				</localControl:DrawingCanvas.ContextMenu>
+			</localControl:DrawingCanvas>
+		</Ruler:Ruler.DrawingSurface>
+	</Ruler:Ruler>
+</UserControl>

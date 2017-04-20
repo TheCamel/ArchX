@@ -1,0 +1,524 @@
+﻿<UserControl x:Class="ArchX.Views.RibbonView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			 xmlns:Fluent="urn:fluent-ribbon"
+			 xmlns:Converters="clr-namespace:ArchX.Components.Converters"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+	<Grid>
+
+		<Fluent:Ribbon AutomaticStateManagement="True">
+
+			<!-- CONTEXTUAL GROUPS -->
+			<Fluent:Ribbon.ContextualGroups>
+				<Fluent:RibbonContextualTabGroup x:Name="tabGroupDocument"
+                                                 BorderBrush="#FF9D00"
+                                                 Background="#FF9D00"
+                                                 Foreground="#C45300"
+                                                 Header="DOCUMENT"
+                                                 Visibility="{Binding HasDocument, Converter={x:Static Converters:BoolToVisibilityConverter.Instance}, ConverterParameter={x:Static Visibility.Collapsed}}" />
+			</Fluent:Ribbon.ContextualGroups>
+
+			<!-- MENU -->
+			<Fluent:Ribbon.Menu>
+				<Grid>
+					<!--Backstage items can be keytipped-->
+					<Fluent:Backstage>
+						<Fluent:BackstageTabControl>
+
+							<Fluent:SeparatorTabItem />
+							<Fluent:Button Header="New"
+                                           KeyTip="N"
+                                           Command="{Binding NewDocumentCommand}" />
+
+							<Fluent:Button Header="Exit"
+                                           KeyTip="X"
+                                           Command="{Binding SysExitCommand}" />
+
+						</Fluent:BackstageTabControl>
+					</Fluent:Backstage>
+				</Grid>
+			</Fluent:Ribbon.Menu>
+
+			<!-- ?? -->
+			<Fluent:Ribbon.ToolBarItems>
+			</Fluent:Ribbon.ToolBarItems>
+
+			<!-- QUICK ACCES -->
+			<Fluent:Ribbon.QuickAccessItems>
+			</Fluent:Ribbon.QuickAccessItems>
+
+			<!-- TABS : HOME -->
+			<Fluent:RibbonTabItem   x:Name="homeTabItem"
+                                    Header="Home"
+                                    KeyTip="H"
+                                    ToolTip="Regular Tool Tip">
+				<Fluent:RibbonGroupBox 
+                                       KeyTip="T10"
+                                       x:Name="C"
+                                       Header="Files"
+                                       CanAddToQuickAccessToolBar="False"
+                                       IsLauncherVisible="False">
+					<Fluent:Button Header="New" SizeDefinition="Large" Command="{Binding NewDocumentCommand}" >
+						<Fluent:Button.Icon>
+							<Viewbox Width="16" Height="16">
+								<Canvas Width="24" Height="24">
+									<Path Data="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z" Fill="Black" />
+								</Canvas>
+							</Viewbox>
+						</Fluent:Button.Icon>
+						<Fluent:Button.LargeIcon>
+							<Viewbox Width="32" Height="32">
+								<Canvas Width="32" Height="24">
+									<Path Data="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z" Fill="Black" />
+								</Canvas>
+							</Viewbox>
+						</Fluent:Button.LargeIcon>
+					</Fluent:Button>
+					
+					<Separator />
+
+					<Fluent:Button Header="About" SizeDefinition="Large" Command="{Binding AboutCommand}" >
+						<Fluent:Button.Icon>
+							<Viewbox Width="16" Height="16">
+								<Canvas xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Width="17.8328" Height="15.8125" Clip="F1 M 0,0L 17.8328,0L 17.8328,15.8125L 0,15.8125L 0,0">
+									<Path Width="9.75" Height="15.8125" Canvas.Left="4.10729" Canvas.Top="0" Stretch="Fill" StrokeThickness="1.5" StrokeLineJoin="Round" Stroke="#FF000000" Data="F1 M 4.85729,15.0625L 8.91979,0.75L 13.1073,15.0625"/>
+									<Path Width="16.1323" Height="8.17396" Canvas.Left="-8.9407e-008" Canvas.Top="7.23854" Stretch="Fill" StrokeThickness="0.7" StrokeLineJoin="Round" Stroke="#FF2092D0" Fill="#FF2092D0" Data="F1 M 15.7823,7.58854L 13.751,7.79166L 12.4073,7.97917L 11.2354,8.21354L 10.2979,8.41666L 9.31347,8.68706L 8.45417,8.96875L 7.78222,9.19226L 7.03222,9.5256L 6.21972,9.94226L 5.50501,10.3913L 4.85514,10.8381L 4.29353,11.3098L 3.81347,11.7131L 3.35406,12.181L 2.82917,12.7958L 2.38729,13.3031L 1.9593,13.9006L 1.27188,15.0625L 0.35,15.0625C 1.15208,13.7708 1.95417,12.4792 3.27361,11.3108C 4.59306,10.1424 6.42986,9.09722 8.60087,8.4974C 10.7719,7.89757 13.2771,7.74306 15.7823,7.58854 Z "/>
+									<Path Width="16.1323" Height="8.17396" Canvas.Left="1.70051" Canvas.Top="7.23854" Stretch="Fill" StrokeThickness="0.7" StrokeLineJoin="Round" Stroke="#FF2092D0" Fill="#FF2092D0" Data="F1 M 2.05051,7.58854L 4.08176,7.79166L 5.42551,7.97917L 6.59738,8.21354L 7.53488,8.41666L 8.51933,8.68706L 9.37863,8.96875L 10.0506,9.19226L 10.8006,9.5256L 11.6131,9.94226L 12.3278,10.3913L 12.9777,10.8381L 13.5393,11.3098L 14.0193,11.7131L 14.4787,12.181L 15.0036,12.7958L 15.4455,13.3031L 15.8735,13.9006L 16.5609,15.0625L 17.4828,15.0625C 16.6807,13.7708 15.8786,12.4792 14.5592,11.3108C 13.2397,10.1424 11.4029,9.09722 9.23193,8.4974C 7.06093,7.89757 4.55572,7.74306 2.05051,7.58854 Z "/>
+								</Canvas>
+							</Viewbox>
+						</Fluent:Button.Icon>
+						<Fluent:Button.LargeIcon>
+							<Viewbox Width="32" Height="32">
+								<Canvas xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Width="17.8328" Height="15.8125" Clip="F1 M 0,0L 17.8328,0L 17.8328,15.8125L 0,15.8125L 0,0">
+									<Path Width="9.75" Height="15.8125" Canvas.Left="4.10729" Canvas.Top="0" Stretch="Fill" StrokeThickness="1.5" StrokeLineJoin="Round" Stroke="#FF000000" Data="F1 M 4.85729,15.0625L 8.91979,0.75L 13.1073,15.0625"/>
+									<Path Width="16.1323" Height="8.17396" Canvas.Left="-8.9407e-008" Canvas.Top="7.23854" Stretch="Fill" StrokeThickness="0.7" StrokeLineJoin="Round" Stroke="#FF2092D0" Fill="#FF2092D0" Data="F1 M 15.7823,7.58854L 13.751,7.79166L 12.4073,7.97917L 11.2354,8.21354L 10.2979,8.41666L 9.31347,8.68706L 8.45417,8.96875L 7.78222,9.19226L 7.03222,9.5256L 6.21972,9.94226L 5.50501,10.3913L 4.85514,10.8381L 4.29353,11.3098L 3.81347,11.7131L 3.35406,12.181L 2.82917,12.7958L 2.38729,13.3031L 1.9593,13.9006L 1.27188,15.0625L 0.35,15.0625C 1.15208,13.7708 1.95417,12.4792 3.27361,11.3108C 4.59306,10.1424 6.42986,9.09722 8.60087,8.4974C 10.7719,7.89757 13.2771,7.74306 15.7823,7.58854 Z "/>
+									<Path Width="16.1323" Height="8.17396" Canvas.Left="1.70051" Canvas.Top="7.23854" Stretch="Fill" StrokeThickness="0.7" StrokeLineJoin="Round" Stroke="#FF2092D0" Fill="#FF2092D0" Data="F1 M 2.05051,7.58854L 4.08176,7.79166L 5.42551,7.97917L 6.59738,8.21354L 7.53488,8.41666L 8.51933,8.68706L 9.37863,8.96875L 10.0506,9.19226L 10.8006,9.5256L 11.6131,9.94226L 12.3278,10.3913L 12.9777,10.8381L 13.5393,11.3098L 14.0193,11.7131L 14.4787,12.181L 15.0036,12.7958L 15.4455,13.3031L 15.8735,13.9006L 16.5609,15.0625L 17.4828,15.0625C 16.6807,13.7708 15.8786,12.4792 14.5592,11.3108C 13.2397,10.1424 11.4029,9.09722 9.23193,8.4974C 7.06093,7.89757 4.55572,7.74306 2.05051,7.58854 Z "/>
+								</Canvas>
+							</Viewbox>
+						</Fluent:Button.LargeIcon>
+					</Fluent:Button>
+
+				</Fluent:RibbonGroupBox>
+			</Fluent:RibbonTabItem>
+
+			<!-- TABS : DRAWINGS -->
+			<Fluent:RibbonTabItem   Header="Drawings" KeyTip="H" ToolTip="Drawing tools"
+									Group="{Binding ElementName=tabGroupDocument, Mode=OneWay}"
+									DataContext="{Binding ActiveDocument}">
+
+				<Fluent:RibbonGroupBox  KeyTip="T10"
+                                       Header="Tools"
+                                       CanAddToQuickAccessToolBar="False"
+                                       IsLauncherVisible="False">
+					<Fluent:ToggleButton Header="Select" SizeDefinition="Large" GroupName="Tool"
+										 Command="{Binding ToolCommand}" CommandParameter="Select" >
+						<Fluent:ToggleButton.Icon>
+							<Viewbox Width="16" Height="16">
+								<Canvas Width="24" Height="24">
+									<Path Data="M4,3H5V5H3V4A1,1 0 0,1 4,3M20,3A1,1 0 0,1 21,4V5H19V3H20M15,5V3H17V5H15M11,5V3H13V5H11M7,5V3H9V5H7M21,20A1,1 0 0,1 20,21H19V19H21V20M15,21V19H17V21H15M11,21V19H13V21H11M7,21V19H9V21H7M4,21A1,1 0 0,1 3,20V19H5V21H4M3,15H5V17H3V15M21,15V17H19V15H21M3,11H5V13H3V11M21,11V13H19V11H21M3,7H5V9H3V7M21,7V9H19V7H21Z" Fill="Black" />
+								</Canvas>
+							</Viewbox>
+						</Fluent:ToggleButton.Icon>
+						<Fluent:ToggleButton.LargeIcon>
+							<Viewbox Width="32" Height="32">
+								<Canvas Width="24" Height="24">
+									<Path Data="M4,3H5V5H3V4A1,1 0 0,1 4,3M20,3A1,1 0 0,1 21,4V5H19V3H20M15,5V3H17V5H15M11,5V3H13V5H11M7,5V3H9V5H7M21,20A1,1 0 0,1 20,21H19V19H21V20M15,21V19H17V21H15M11,21V19H13V21H11M7,21V19H9V21H7M4,21A1,1 0 0,1 3,20V19H5V21H4M3,15H5V17H3V15M21,15V17H19V15H21M3,11H5V13H3V11M21,11V13H19V11H21M3,7H5V9H3V7M21,7V9H19V7H21Z" Fill="Black" />
+								</Canvas>
+							</Viewbox>
+						</Fluent:ToggleButton.LargeIcon>
+					</Fluent:ToggleButton>
+
+					<Fluent:ToggleButton Header="Rectangle" SizeDefinition="Large" GroupName="Tool"
+										 Command="{Binding ToolCommand}" CommandParameter="Rectangle" >
+						<Fluent:ToggleButton.Icon>
+							<Viewbox Width="16" Height="16">
+								<Canvas Width="24" Height="24">
+									<Path Data="M2,2H8V4H16V2H22V8H20V16H22V22H16V20H8V22H2V16H4V8H2V2M16,8V6H8V8H6V16H8V18H16V16H18V8H16M4,4V6H6V4H4M18,4V6H20V4H18M4,18V20H6V18H4M18,18V20H20V18H18Z" Fill="Black" />
+								</Canvas>
+							</Viewbox>
+						</Fluent:ToggleButton.Icon>
+						<Fluent:ToggleButton.LargeIcon>
+							<Viewbox Width="32" Height="32">
+								<Canvas Width="24" Height="24">
+									<Path Data="M2,2H8V4H16V2H22V8H20V16H22V22H16V20H8V22H2V16H4V8H2V2M16,8V6H8V8H6V16H8V18H16V16H18V8H16M4,4V6H6V4H4M18,4V6H20V4H18M4,18V20H6V18H4M18,18V20H20V18H18Z" Fill="Black" />
+								</Canvas>
+							</Viewbox>
+						</Fluent:ToggleButton.LargeIcon>
+					</Fluent:ToggleButton>
+
+					<Fluent:ToggleButton Header="Line" SizeDefinition="Large" GroupName="Tool"
+										 Command="{Binding ToolCommand}" CommandParameter="Line" >
+						<Fluent:ToggleButton.Icon>
+							<Viewbox Width="16" Height="16">
+								<Canvas Width="24" Height="24">
+									<Path Data="M5.5,7A1.5,1.5 0 0,0 7,5.5A1.5,1.5 0 0,0 5.5,4A1.5,1.5 0 0,0 4,5.5A1.5,1.5 0 0,0 5.5,7M21.41,11.58C21.77,11.94 22,12.44 22,13C22,13.55 21.78,14.05 21.41,14.41L14.41,21.41C14.05,21.77 13.55,22 13,22C12.45,22 11.95,21.77 11.58,21.41L2.59,12.41C2.22,12.05 2,11.55 2,11V4C2,2.89 2.89,2 4,2H11C11.55,2 12.05,2.22 12.41,2.58L21.41,11.58M13,20L20,13L11.5,4.5L4.5,11.5L13,20Z" Fill="Black" />
+								</Canvas>
+							</Viewbox>
+						</Fluent:ToggleButton.Icon>
+						<Fluent:ToggleButton.LargeIcon>
+							<Viewbox Width="32" Height="32">
+								<Canvas Width="24" Height="24">
+									<Path Data="M5.5,7A1.5,1.5 0 0,0 7,5.5A1.5,1.5 0 0,0 5.5,4A1.5,1.5 0 0,0 4,5.5A1.5,1.5 0 0,0 5.5,7M21.41,11.58C21.77,11.94 22,12.44 22,13C22,13.55 21.78,14.05 21.41,14.41L14.41,21.41C14.05,21.77 13.55,22 13,22C12.45,22 11.95,21.77 11.58,21.41L2.59,12.41C2.22,12.05 2,11.55 2,11V4C2,2.89 2.89,2 4,2H11C11.55,2 12.05,2.22 12.41,2.58L21.41,11.58M13,20L20,13L11.5,4.5L4.5,11.5L13,20Z" Fill="Black" />
+								</Canvas>
+							</Viewbox>
+						</Fluent:ToggleButton.LargeIcon>
+					</Fluent:ToggleButton>
+
+					<Fluent:ToggleButton Header="Polyline" SizeDefinition="Large" GroupName="Tool"
+										 Command="{Binding ToolCommand}" CommandParameter="Polyline" >
+						<Fluent:ToggleButton.Icon>
+							<Viewbox Width="16" Height="16">
+								<Canvas Width="24" Height="24">
+									<Rectangle Width="5.5" Height="5.5" Canvas.Left="-2.38419e-007" Canvas.Top="0" Stretch="Fill" StrokeThickness="2" StrokeLineJoin="Round" Stroke="#FF000000"/>
+									<Path Width="15.8333" Height="12.3333" Canvas.Left="1.84185" Canvas.Top="3.68091" Stretch="Fill" StrokeThickness="2" StrokeLineJoin="Bevel" Stroke="#FF000000" Data="F1 M 2.84185,4.68091L 7.50852,12.7642L 12.1752,7.34757L 16.6752,15.0142"/>
+									<Rectangle Width="5.5" Height="5.5" Canvas.Left="4.7" Canvas.Top="11.8059" Stretch="Fill" StrokeThickness="2" StrokeLineJoin="Round" Stroke="#FF000000"/>
+									<Rectangle Width="5.5" Height="5.5" Canvas.Left="9.2" Canvas.Top="2.72257" Stretch="Fill" StrokeThickness="2" StrokeLineJoin="Round" Stroke="#FF000000"/>
+									<Rectangle Width="5.5" Height="5.5" Canvas.Left="14.0502" Canvas.Top="13.9726" Stretch="Fill" StrokeThickness="2" StrokeLineJoin="Round" Stroke="#FF000000"/>
+								</Canvas>
+							</Viewbox>
+						</Fluent:ToggleButton.Icon>
+						<Fluent:ToggleButton.LargeIcon>
+							<Viewbox Width="32" Height="32">
+								<Canvas Width="24" Height="24">
+									<Rectangle Width="5.5" Height="5.5" Canvas.Left="-2.38419e-007" Canvas.Top="0" Stretch="Fill" StrokeThickness="2" StrokeLineJoin="Round" Stroke="#FF000000"/>
+									<Path Width="15.8333" Height="12.3333" Canvas.Left="1.84185" Canvas.Top="3.68091" Stretch="Fill" StrokeThickness="2" StrokeLineJoin="Bevel" Stroke="#FF000000" Data="F1 M 2.84185,4.68091L 7.50852,12.7642L 12.1752,7.34757L 16.6752,15.0142"/>
+									<Rectangle Width="5.5" Height="5.5" Canvas.Left="4.7" Canvas.Top="11.8059" Stretch="Fill" StrokeThickness="2" StrokeLineJoin="Round" Stroke="#FF000000"/>
+									<Rectangle Width="5.5" Height="5.5" Canvas.Left="9.2" Canvas.Top="2.72257" Stretch="Fill" StrokeThickness="2" StrokeLineJoin="Round" Stroke="#FF000000"/>
+									<Rectangle Width="5.5" Height="5.5" Canvas.Left="14.0502" Canvas.Top="13.9726" Stretch="Fill" StrokeThickness="2" StrokeLineJoin="Round" Stroke="#FF000000"/>
+								</Canvas>
+							</Viewbox>
+						</Fluent:ToggleButton.LargeIcon>
+					</Fluent:ToggleButton>
+					
+					<Separator></Separator>
+
+					<Fluent:ToggleButton Header="Circle" SizeDefinition="Large" GroupName="Tool"
+										 Command="{Binding ToolCommand}" CommandParameter="Circle" >
+						<Fluent:ToggleButton.Icon>
+							<Viewbox Width="16" Height="16">
+								<Canvas Width="24" Height="24">
+									<Ellipse Width="20.0273" Height="20.0273" Canvas.Left="1.19209e-007" Canvas.Top="0" Stretch="Fill" StrokeThickness="2" StrokeLineJoin="Round" Stroke="#FF000000"/>
+									<Rectangle Width="5.5" Height="5.5" Canvas.Left="7.26362" Canvas.Top="7.26363" Stretch="Fill" StrokeThickness="2" StrokeLineJoin="Round" Stroke="#FF000000"/>
+								</Canvas>
+							</Viewbox>
+						</Fluent:ToggleButton.Icon>
+						<Fluent:ToggleButton.LargeIcon>
+							<Viewbox Width="32" Height="32">
+								<Canvas Width="24" Height="24">
+									<Ellipse Width="20.0273" Height="20.0273" Canvas.Left="1.19209e-007" Canvas.Top="0" Stretch="Fill" StrokeThickness="2" StrokeLineJoin="Round" Stroke="#FF000000"/>
+									<Rectangle Width="5.5" Height="5.5" Canvas.Left="7.26362" Canvas.Top="7.26363" Stretch="Fill" StrokeThickness="2" StrokeLineJoin="Round" Stroke="#FF000000"/>
+								</Canvas>
+							</Viewbox>
+						</Fluent:ToggleButton.LargeIcon>
+					</Fluent:ToggleButton>
+					
+				</Fluent:RibbonGroupBox>
+
+				<Fluent:RibbonGroupBox  KeyTip="T10"
+                                       Header="Vectors"
+                                       CanAddToQuickAccessToolBar="False"
+                                       IsLauncherVisible="False">
+					<Fluent:ToggleButton Header="Select" SizeDefinition="Large" GroupName="Vectors"
+										 Command="{Binding VectorToolCommand}" CommandParameter="Select" >
+						<Fluent:ToggleButton.Icon>
+							<Viewbox Width="16" Height="16">
+								<Canvas Width="24" Height="24">
+									<Path Width="21.5001" Height="2" Canvas.Left="0" Canvas.Top="8.74341" Stretch="Fill" StrokeThickness="2" StrokeLineJoin="Round" Stroke="#FF000000" Data="M 1,9.74341L 20.5001,9.74341"/>
+									<Rectangle Width="5.5" Height="5.5" Canvas.Left="8.04565" Canvas.Top="7.25" Stretch="Fill" StrokeThickness="2" StrokeLineJoin="Round" Stroke="#FF000000" Fill="#FFFFFFFF"/>
+									<Path Width="4.5625" Height="4.61841" Canvas.Left="8.5144" Canvas.Top="14.5" Stretch="Fill" StrokeLineJoin="Round" Stroke="#FF000000" Fill="#FF000000" Data="F1 M 10.8894,15L 9.0144,18.6184L 10.8269,17.7017L 12.5769,18.6184L 10.8894,15 Z "/>
+								</Canvas>
+							</Viewbox>
+						</Fluent:ToggleButton.Icon>
+						<Fluent:ToggleButton.LargeIcon>
+							<Viewbox Width="32" Height="32">
+								<Canvas Width="24" Height="24">
+									<Path Width="21.5001" Height="2" Canvas.Left="0" Canvas.Top="8.74341" Stretch="Fill" StrokeThickness="2" StrokeLineJoin="Round" Stroke="#FF000000" Data="M 1,9.74341L 20.5001,9.74341"/>
+									<Rectangle Width="5.5" Height="5.5" Canvas.Left="8.04565" Canvas.Top="7.25" Stretch="Fill" StrokeThickness="2" StrokeLineJoin="Round" Stroke="#FF000000" Fill="#FFFFFFFF"/>
+									<Path Width="4.5625" Height="4.61841" Canvas.Left="8.5144" Canvas.Top="14.5" Stretch="Fill" StrokeLineJoin="Round" Stroke="#FF000000" Fill="#FF000000" Data="F1 M 10.8894,15L 9.0144,18.6184L 10.8269,17.7017L 12.5769,18.6184L 10.8894,15 Z "/>
+								</Canvas>
+							</Viewbox>
+						</Fluent:ToggleButton.LargeIcon>
+					</Fluent:ToggleButton>
+
+					<Fluent:ToggleButton Header="Insert" SizeDefinition="Large" GroupName="Vectors"
+										 Command="{Binding VectorToolCommand}" CommandParameter="Insert" >
+						<Fluent:ToggleButton.Icon>
+							<Viewbox Width="16" Height="16">
+								<Canvas Width="24" Height="24">
+									<Path Width="21.5001" Height="2" Canvas.Left="0" Canvas.Top="9.60491" Stretch="Fill" StrokeThickness="2" StrokeLineJoin="Round" Stroke="#FF000000" Data="F1 M 1,10.6049L 20.5001,10.6049"/>
+									<Rectangle Width="5.5" Height="5.5" Canvas.Left="8.04565" Canvas.Top="8.1115" Stretch="Fill" StrokeThickness="2" StrokeLineJoin="Round" Stroke="#FF000000" Fill="#FFFFFFFF"/>
+									<Path Width="4.5625" Height="4.61841" Canvas.Left="8.5144" Canvas.Top="15.3615" Stretch="Fill" StrokeLineJoin="Round" Stroke="#FF000000" Fill="#FF000000" Data="F1 M 10.8894,15.8615L 9.0144,19.4799L 10.8269,18.5632L 12.5769,19.4799L 10.8894,15.8615 Z "/>
+									<Path Width="8" Height="2" Canvas.Left="13.5957" Canvas.Top="3" Stretch="Fill" StrokeThickness="2" StrokeLineJoin="Round" Stroke="#FF000000" Data="F1 M 14.5957,4L 20.5957,4"/>
+									<Path Width="2" Height="8" Canvas.Left="16.5957" Canvas.Top="0" Stretch="Fill" StrokeThickness="2" StrokeLineJoin="Round" Stroke="#FF000000" Data="F1 M 17.5957,7L 17.5957,1"/>
+								</Canvas>
+							</Viewbox>
+						</Fluent:ToggleButton.Icon>
+						<Fluent:ToggleButton.LargeIcon>
+							<Viewbox Width="32" Height="32">
+								<Canvas Width="24" Height="24">
+									<Path Width="21.5001" Height="2" Canvas.Left="0" Canvas.Top="9.60491" Stretch="Fill" StrokeThickness="2" StrokeLineJoin="Round" Stroke="#FF000000" Data="F1 M 1,10.6049L 20.5001,10.6049"/>
+									<Rectangle Width="5.5" Height="5.5" Canvas.Left="8.04565" Canvas.Top="8.1115" Stretch="Fill" StrokeThickness="2" StrokeLineJoin="Round" Stroke="#FF000000" Fill="#FFFFFFFF"/>
+									<Path Width="4.5625" Height="4.61841" Canvas.Left="8.5144" Canvas.Top="15.3615" Stretch="Fill" StrokeLineJoin="Round" Stroke="#FF000000" Fill="#FF000000" Data="F1 M 10.8894,15.8615L 9.0144,19.4799L 10.8269,18.5632L 12.5769,19.4799L 10.8894,15.8615 Z "/>
+									<Path Width="8" Height="2" Canvas.Left="13.5957" Canvas.Top="3" Stretch="Fill" StrokeThickness="2" StrokeLineJoin="Round" Stroke="#FF000000" Data="F1 M 14.5957,4L 20.5957,4"/>
+									<Path Width="2" Height="8" Canvas.Left="16.5957" Canvas.Top="0" Stretch="Fill" StrokeThickness="2" StrokeLineJoin="Round" Stroke="#FF000000" Data="F1 M 17.5957,7L 17.5957,1"/>
+								</Canvas>
+							</Viewbox>
+						</Fluent:ToggleButton.LargeIcon>
+					</Fluent:ToggleButton>
+
+					<Fluent:ToggleButton Header="Remove" SizeDefinition="Large" GroupName="Vectors"
+										 Command="{Binding VectorToolCommand}" CommandParameter="Add" >
+						<Fluent:ToggleButton.Icon>
+							<Viewbox Width="16" Height="16">
+								<Canvas Width="24" Height="24">
+									<Path Width="21.5001" Height="2" Canvas.Left="1.19209e-007" Canvas.Top="8.74341" Stretch="Fill" StrokeThickness="2" StrokeLineJoin="Round" Stroke="#FF000000" Data="F1 M 1,9.74341L 20.5001,9.74341"/>
+									<Rectangle Width="5.5" Height="5.5" Canvas.Left="8.04565" Canvas.Top="7.25" Stretch="Fill" StrokeThickness="2" StrokeLineJoin="Round" Stroke="#FF000000" Fill="#FFFFFFFF"/>
+									<Path Width="4.5625" Height="4.61841" Canvas.Left="8.51441" Canvas.Top="14.5" Stretch="Fill" StrokeLineJoin="Round" Stroke="#FF000000" Fill="#FF000000" Data="F1 M 10.8894,15L 9.01441,18.6184L 10.8269,17.7017L 12.5769,18.6184L 10.8894,15 Z "/>
+									<Path Width="8.00001" Height="2" Canvas.Left="13.817" Canvas.Top="1.98846" Stretch="Fill" StrokeThickness="2" StrokeLineJoin="Round" Stroke="#FF000000" Data="F1 M 14.817,2.98846L 20.817,2.98846"/>
+								</Canvas>
+							</Viewbox>
+						</Fluent:ToggleButton.Icon>
+						<Fluent:ToggleButton.LargeIcon>
+							<Viewbox Width="32" Height="32">
+								<Canvas Width="24" Height="24">
+									<Path Width="21.5001" Height="2" Canvas.Left="1.19209e-007" Canvas.Top="8.74341" Stretch="Fill" StrokeThickness="2" StrokeLineJoin="Round" Stroke="#FF000000" Data="F1 M 1,9.74341L 20.5001,9.74341"/>
+									<Rectangle Width="5.5" Height="5.5" Canvas.Left="8.04565" Canvas.Top="7.25" Stretch="Fill" StrokeThickness="2" StrokeLineJoin="Round" Stroke="#FF000000" Fill="#FFFFFFFF"/>
+									<Path Width="4.5625" Height="4.61841" Canvas.Left="8.51441" Canvas.Top="14.5" Stretch="Fill" StrokeLineJoin="Round" Stroke="#FF000000" Fill="#FF000000" Data="F1 M 10.8894,15L 9.01441,18.6184L 10.8269,17.7017L 12.5769,18.6184L 10.8894,15 Z "/>
+									<Path Width="8.00001" Height="2" Canvas.Left="13.817" Canvas.Top="1.98846" Stretch="Fill" StrokeThickness="2" StrokeLineJoin="Round" Stroke="#FF000000" Data="F1 M 14.817,2.98846L 20.817,2.98846"/>
+								</Canvas>
+							</Viewbox>
+						</Fluent:ToggleButton.LargeIcon>
+					</Fluent:ToggleButton>
+
+				</Fluent:RibbonGroupBox>
+
+				<Fluent:RibbonGroupBox  KeyTip="T10"
+                                       Header="Options"
+                                       CanAddToQuickAccessToolBar="False"
+                                       IsLauncherVisible="False">
+					<Fluent:ToggleButton Header="Mouse position" SizeDefinition="Large" IsChecked="{Binding ShowMousePosition}" >
+						<Fluent:ToggleButton.Icon>
+							<Viewbox Width="16" Height="16">
+								<Canvas Width="24" Height="24">
+									<Path Width="4.17083" Height="5.1875" Canvas.Left="10.2344" Canvas.Top="-7.62939e-006" Stretch="Fill" StrokeLineJoin="Round" Stroke="#FF000000" Fill="#FF000000" Data="F1 M 10.7344,4.68749L 10.7344,0.499992C 11.4807,0.979164 12.227,1.45833 12.7555,2.15624C 13.2839,2.85416 13.5946,3.77083 13.9052,4.68749L 10.7344,4.68749 Z "/>
+									<Path Width="4.01563" Height="5.15103" Canvas.Left="4.88542" Canvas.Top="0.0182343" Stretch="Fill" StrokeLineJoin="Round" Stroke="#FF000000" Fill="#FF000000" Data="F1 M 5.38542,4.66927L 8.40104,4.66824L 8.40104,0.518234C 7.67721,0.976563 6.95337,1.43489 6.45077,2.12673C 5.94816,2.81857 5.66679,3.74392 5.38542,4.66927 Z "/>
+									<Path Width="9.375" Height="7.53997" Canvas.Left="4.94271" Canvas.Top="6.3063" Stretch="Fill" StrokeLineJoin="Round" Stroke="#FF000000" Fill="#FF000000" Data="F1 M 5.44271,6.8063L 13.8177,6.8063C 13.8177,9.08107 13.8177,11.3558 12.4219,12.4932C 11.026,13.6306 8.23437,13.6306 6.83854,12.4932C 5.44271,11.3558 5.44271,9.08107 5.44271,6.8063 Z "/>
+									<Path Width="10.0833" Height="11.8085" Canvas.Left="9.16146" Canvas.Top="7.00422" Stretch="Fill" StrokeLineJoin="Round" Stroke="#FF000000" Data="F1 M 9.66146,13.6437C 9.66146,14.3472 9.66146,15.0507 9.95313,15.7775C 10.2448,16.5042 10.8281,17.2542 11.4115,17.7126C 11.9948,18.1709 12.5781,18.3376 13.2656,18.3098C 13.9531,18.282 14.7448,18.0598 15.2667,17.6848C 15.7886,17.3098 16.0407,16.782 16.1667,15.5945C 16.2928,14.407 16.2928,12.5598 16.4584,11.2889C 16.624,10.0181 16.9552,9.32366 17.3639,8.78894C 17.7726,8.25422 18.2587,7.87922 18.7448,7.50422"/>
+									<Ellipse Width="7" Height="7" Canvas.Left="0" Canvas.Top="12.124" Stretch="Fill" StrokeLineJoin="Round" Stroke="#FF000000"/>
+									<Path Width="1" Height="6.76776" Canvas.Left="3.01662" Canvas.Top="12.1437" Stretch="Fill" StrokeLineJoin="Round" Stroke="#FF000000" Data="F1 M 3.51662,12.6437L 3.51662,18.4115"/>
+									<Path Width="6.18788" Height="1" Canvas.Left="0.441631" Canvas.Top="15.0615" Stretch="Fill" StrokeLineJoin="Round" Stroke="#FF000000" Data="F1 M 0.941631,15.5615L 6.12951,15.5615"/>
+								</Canvas>
+							</Viewbox>
+						</Fluent:ToggleButton.Icon>
+						<Fluent:ToggleButton.LargeIcon>
+							<Viewbox Width="32" Height="32">
+								<Canvas Width="24" Height="24">
+									<Path Width="4.17083" Height="5.1875" Canvas.Left="10.2344" Canvas.Top="-7.62939e-006" Stretch="Fill" StrokeLineJoin="Round" Stroke="#FF000000" Fill="#FF000000" Data="F1 M 10.7344,4.68749L 10.7344,0.499992C 11.4807,0.979164 12.227,1.45833 12.7555,2.15624C 13.2839,2.85416 13.5946,3.77083 13.9052,4.68749L 10.7344,4.68749 Z "/>
+									<Path Width="4.01563" Height="5.15103" Canvas.Left="4.88542" Canvas.Top="0.0182343" Stretch="Fill" StrokeLineJoin="Round" Stroke="#FF000000" Fill="#FF000000" Data="F1 M 5.38542,4.66927L 8.40104,4.66824L 8.40104,0.518234C 7.67721,0.976563 6.95337,1.43489 6.45077,2.12673C 5.94816,2.81857 5.66679,3.74392 5.38542,4.66927 Z "/>
+									<Path Width="9.375" Height="7.53997" Canvas.Left="4.94271" Canvas.Top="6.3063" Stretch="Fill" StrokeLineJoin="Round" Stroke="#FF000000" Fill="#FF000000" Data="F1 M 5.44271,6.8063L 13.8177,6.8063C 13.8177,9.08107 13.8177,11.3558 12.4219,12.4932C 11.026,13.6306 8.23437,13.6306 6.83854,12.4932C 5.44271,11.3558 5.44271,9.08107 5.44271,6.8063 Z "/>
+									<Path Width="10.0833" Height="11.8085" Canvas.Left="9.16146" Canvas.Top="7.00422" Stretch="Fill" StrokeLineJoin="Round" Stroke="#FF000000" Data="F1 M 9.66146,13.6437C 9.66146,14.3472 9.66146,15.0507 9.95313,15.7775C 10.2448,16.5042 10.8281,17.2542 11.4115,17.7126C 11.9948,18.1709 12.5781,18.3376 13.2656,18.3098C 13.9531,18.282 14.7448,18.0598 15.2667,17.6848C 15.7886,17.3098 16.0407,16.782 16.1667,15.5945C 16.2928,14.407 16.2928,12.5598 16.4584,11.2889C 16.624,10.0181 16.9552,9.32366 17.3639,8.78894C 17.7726,8.25422 18.2587,7.87922 18.7448,7.50422"/>
+									<Ellipse Width="7" Height="7" Canvas.Left="0" Canvas.Top="12.124" Stretch="Fill" StrokeLineJoin="Round" Stroke="#FF000000"/>
+									<Path Width="1" Height="6.76776" Canvas.Left="3.01662" Canvas.Top="12.1437" Stretch="Fill" StrokeLineJoin="Round" Stroke="#FF000000" Data="F1 M 3.51662,12.6437L 3.51662,18.4115"/>
+									<Path Width="6.18788" Height="1" Canvas.Left="0.441631" Canvas.Top="15.0615" Stretch="Fill" StrokeLineJoin="Round" Stroke="#FF000000" Data="F1 M 0.941631,15.5615L 6.12951,15.5615"/>
+								</Canvas>
+							</Viewbox>
+						</Fluent:ToggleButton.LargeIcon>
+					</Fluent:ToggleButton>
+
+					<Fluent:ToggleButton Header="Guidelines" SizeDefinition="Large" IsChecked="{Binding ShowGuides}" >
+						<Fluent:ToggleButton.Icon>
+							<Viewbox Width="16" Height="16">
+								<Canvas Width="24" Height="24">
+									<Path Width="2" Height="18.6667" Canvas.Left="9.66667" Canvas.Top="0.999992" Stretch="Fill" Fill="#FF000000" Data="F1 M 11.6667,6.33333L 11.6667,8.99999L 9.66667,8.99999L 9.66667,6.33333L 11.6667,6.33333 Z M 11.6667,11.6667L 11.6667,14.3333L 9.66667,14.3333L 9.66667,11.6667L 11.6667,11.6667 Z M 11.6667,17L 11.6667,19.6667L 9.66667,19.6667L 9.66667,17L 11.6667,17 Z M 11.6667,0.999992L 11.6667,3.66666L 9.66667,3.66666L 9.66667,0.999992L 11.6667,0.999992 Z "/>
+									<Path Width="18" Height="2" Canvas.Left="1" Canvas.Top="4.08854" Stretch="Fill" Fill="#FF000000" Data="F1 M 6.33333,4.08854L 9,4.08854L 9,6.08854L 6.33333,6.08854L 6.33333,4.08854 Z M 11.6667,4.08854L 14.3333,4.08854L 14.3333,6.08854L 11.6667,6.08854L 11.6667,4.08854 Z M 17,4.08854L 19,4.08854L 19,6.08854L 17,6.08854L 17,4.08854 Z M 1,4.08854L 3.66667,4.08854L 3.66667,6.08854L 1,6.08854L 1,4.08854 Z "/>
+								</Canvas>
+							</Viewbox>
+						</Fluent:ToggleButton.Icon>
+						<Fluent:ToggleButton.LargeIcon>
+							<Viewbox Width="32" Height="32">
+								<Canvas Width="24" Height="24">
+									<Path Width="2" Height="18.6667" Canvas.Left="9.66667" Canvas.Top="0.999992" Stretch="Fill" Fill="#FF000000" Data="F1 M 11.6667,6.33333L 11.6667,8.99999L 9.66667,8.99999L 9.66667,6.33333L 11.6667,6.33333 Z M 11.6667,11.6667L 11.6667,14.3333L 9.66667,14.3333L 9.66667,11.6667L 11.6667,11.6667 Z M 11.6667,17L 11.6667,19.6667L 9.66667,19.6667L 9.66667,17L 11.6667,17 Z M 11.6667,0.999992L 11.6667,3.66666L 9.66667,3.66666L 9.66667,0.999992L 11.6667,0.999992 Z "/>
+									<Path Width="18" Height="2" Canvas.Left="1" Canvas.Top="4.08854" Stretch="Fill" Fill="#FF000000" Data="F1 M 6.33333,4.08854L 9,4.08854L 9,6.08854L 6.33333,6.08854L 6.33333,4.08854 Z M 11.6667,4.08854L 14.3333,4.08854L 14.3333,6.08854L 11.6667,6.08854L 11.6667,4.08854 Z M 17,4.08854L 19,4.08854L 19,6.08854L 17,6.08854L 17,4.08854 Z M 1,4.08854L 3.66667,4.08854L 3.66667,6.08854L 1,6.08854L 1,4.08854 Z "/>
+								</Canvas>
+							</Viewbox>
+						</Fluent:ToggleButton.LargeIcon>
+					</Fluent:ToggleButton>
+
+					<Fluent:ToggleButton Header="Snapping" SizeDefinition="Large" IsChecked="{Binding IsSnapping}" >
+						<Fluent:ToggleButton.Icon>
+							<Viewbox Width="16" Height="16">
+								<Canvas Width="24" Height="24">
+									<Path Width="19.0025" Height="16.6061" Canvas.Left="0.742198" Canvas.Top="5.3645" Stretch="Fill" StrokeThickness="5" StrokeLineJoin="Round" Stroke="#FF000000" Data="F1 M 3.24465,7.8645C 3.23771,9.95555 3.23076,12.0466 3.44604,13.5674C 3.66132,15.0881 4.09882,16.0386 4.76549,16.894C 5.43215,17.7495 6.32799,18.5098 7.2759,18.9376C 8.22382,19.3653 9.22382,19.4603 10.2551,19.4698C 11.2863,19.4793 12.3488,19.4033 13.3176,18.9756C 14.2863,18.5479 15.1613,17.7685 15.8002,16.8845C 16.4391,16.0006 16.8419,15.0121 17.0433,13.4913C 17.2447,11.9706 17.2447,9.91753 17.2447,7.8645"/>
+									<Path Width="5" Height="8.5" Canvas.Left="0.759959" Canvas.Top="7.62939e-006" Stretch="Fill" StrokeThickness="5" StrokeLineJoin="Round" Stroke="#FF000000" Data="F1 M 3.25996,6.00001L 3.25996,2.50001"/>
+									<Path Width="6.33333" Height="12.2917" Canvas.Left="7.03632" Canvas.Top="1.80941" Stretch="Fill" StrokeLineJoin="Round" Stroke="#FF000000" Fill="#FF000000" Data="F1 M 10.7447,2.30941L 7.53632,8.51774L 10.0363,8.51774L 9.91132,13.6011L 12.8697,7.39795L 10.6197,7.39795L 10.7447,2.30941 Z "/>
+									<Path Width="5" Height="8.5" Canvas.Left="14.7416" Canvas.Top="0.0124741" Stretch="Fill" StrokeThickness="5" StrokeLineJoin="Round" Stroke="#FF000000" Data="F1 M 17.2416,6.01247L 17.2416,2.51247"/>
+								</Canvas>
+							</Viewbox>
+						</Fluent:ToggleButton.Icon>
+						<Fluent:ToggleButton.LargeIcon>
+							<Viewbox Width="32" Height="32">
+								<Canvas Width="24" Height="24">
+									<Path Width="19.0025" Height="16.6061" Canvas.Left="0.742198" Canvas.Top="5.3645" Stretch="Fill" StrokeThickness="5" StrokeLineJoin="Round" Stroke="#FF000000" Data="F1 M 3.24465,7.8645C 3.23771,9.95555 3.23076,12.0466 3.44604,13.5674C 3.66132,15.0881 4.09882,16.0386 4.76549,16.894C 5.43215,17.7495 6.32799,18.5098 7.2759,18.9376C 8.22382,19.3653 9.22382,19.4603 10.2551,19.4698C 11.2863,19.4793 12.3488,19.4033 13.3176,18.9756C 14.2863,18.5479 15.1613,17.7685 15.8002,16.8845C 16.4391,16.0006 16.8419,15.0121 17.0433,13.4913C 17.2447,11.9706 17.2447,9.91753 17.2447,7.8645"/>
+									<Path Width="5" Height="8.5" Canvas.Left="0.759959" Canvas.Top="7.62939e-006" Stretch="Fill" StrokeThickness="5" StrokeLineJoin="Round" Stroke="#FF000000" Data="F1 M 3.25996,6.00001L 3.25996,2.50001"/>
+									<Path Width="6.33333" Height="12.2917" Canvas.Left="7.03632" Canvas.Top="1.80941" Stretch="Fill" StrokeLineJoin="Round" Stroke="#FF000000" Fill="#FF000000" Data="F1 M 10.7447,2.30941L 7.53632,8.51774L 10.0363,8.51774L 9.91132,13.6011L 12.8697,7.39795L 10.6197,7.39795L 10.7447,2.30941 Z "/>
+									<Path Width="5" Height="8.5" Canvas.Left="14.7416" Canvas.Top="0.0124741" Stretch="Fill" StrokeThickness="5" StrokeLineJoin="Round" Stroke="#FF000000" Data="F1 M 17.2416,6.01247L 17.2416,2.51247"/>
+								</Canvas>
+							</Viewbox>
+						</Fluent:ToggleButton.LargeIcon>
+					</Fluent:ToggleButton>
+
+					<Fluent:ToggleButton Header="Lock Ruler" SizeDefinition="Large" IsChecked="{Binding IsProtected}" >
+						<Fluent:ToggleButton.Icon>
+							<Viewbox Width="16" Height="16">
+								<Canvas Width="24" Height="24">
+									<Path Data="M12,17A2,2 0 0,0 14,15C14,13.89 13.1,13 12,13A2,2 0 0,0 10,15A2,2 0 0,0 12,17M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6A2,2 0 0,1 4,20V10C4,8.89 4.9,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z" Fill="Black" />
+								</Canvas>
+							</Viewbox>
+						</Fluent:ToggleButton.Icon>
+						<Fluent:ToggleButton.LargeIcon>
+							<Viewbox Width="32" Height="32">
+								<Canvas Width="24" Height="24">
+									<Path Data="M12,17A2,2 0 0,0 14,15C14,13.89 13.1,13 12,13A2,2 0 0,0 10,15A2,2 0 0,0 12,17M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6A2,2 0 0,1 4,20V10C4,8.89 4.9,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z" Fill="Black" />
+								</Canvas>
+							</Viewbox>
+						</Fluent:ToggleButton.LargeIcon>
+					</Fluent:ToggleButton>
+
+				</Fluent:RibbonGroupBox>
+				
+			</Fluent:RibbonTabItem>
+
+			<!-- TABS : LAYERS -->
+			<Fluent:RibbonTabItem   Header="Layers" KeyTip="H" ToolTip="Layer tools"
+									Group="{Binding ElementName=tabGroupDocument, Mode=OneWay}"
+									DataContext="{Binding ActiveDocument}">
+
+				<Fluent:RibbonGroupBox  KeyTip="T10"
+                                       Header="Layers"
+                                       CanAddToQuickAccessToolBar="False"
+                                       IsLauncherVisible="False">
+					
+					<Fluent:Button Header="New" SizeDefinition="Large"
+										 Command="{Binding LayerCommand}" CommandParameter="New" >
+						<Fluent:Button.Icon>
+							<Viewbox Width="16" Height="16">
+								<Canvas Width="24" Height="24">
+									<Path Data="M12,16L19.36,10.27L21,9L12,2L3,9L4.63,10.27M12,18.54L4.62,12.81L3,14.07L12,21.07L21,14.07L19.37,12.8L12,18.54Z" Fill="Black" />
+								</Canvas>
+							</Viewbox>
+						</Fluent:Button.Icon>
+						<Fluent:Button.LargeIcon>
+							<Viewbox Width="32" Height="32">
+								<Canvas Width="24" Height="24">
+									<Path Data="M12,16L19.36,10.27L21,9L12,2L3,9L4.63,10.27M12,18.54L4.62,12.81L3,14.07L12,21.07L21,14.07L19.37,12.8L12,18.54Z" Fill="Black" />
+								</Canvas>
+							</Viewbox>
+						</Fluent:Button.LargeIcon>
+					</Fluent:Button>
+
+					<!--<Fluent:ToggleButton Header="Duplicate" SizeDefinition="Large"
+										 Command="{Binding LayerCommand}" CommandParameter="Duplicate" >
+						<Fluent:ToggleButton.Icon>
+							<Viewbox Width="16" Height="16">
+								<Canvas Width="24" Height="24">
+									<Path Data="M2,2H8V4H16V2H22V8H20V16H22V22H16V20H8V22H2V16H4V8H2V2M16,8V6H8V8H6V16H8V18H16V16H18V8H16M4,4V6H6V4H4M18,4V6H20V4H18M4,18V20H6V18H4M18,18V20H20V18H18Z" Fill="Black" />
+								</Canvas>
+							</Viewbox>
+						</Fluent:ToggleButton.Icon>
+						<Fluent:ToggleButton.LargeIcon>
+							<Viewbox Width="32" Height="32">
+								<Canvas Width="24" Height="24">
+									<Path Data="M2,2H8V4H16V2H22V8H20V16H22V22H16V20H8V22H2V16H4V8H2V2M16,8V6H8V8H6V16H8V18H16V16H18V8H16M4,4V6H6V4H4M18,4V6H20V4H18M4,18V20H6V18H4M18,18V20H20V18H18Z" Fill="Black" />
+								</Canvas>
+							</Viewbox>
+						</Fluent:ToggleButton.LargeIcon>
+					</Fluent:ToggleButton>-->
+
+					<Fluent:Button Header="Delete" SizeDefinition="Large"
+										 Command="{Binding LayerCommand}" CommandParameter="Delete" >
+						<Fluent:Button.Icon>
+							<Viewbox Width="16" Height="16">
+								<Canvas Width="24" Height="24">
+									<Path Data="M3.27,1L2,2.27L6.22,6.5L3,9L4.63,10.27L12,16L14.1,14.37L15.53,15.8L12,18.54L4.63,12.81L3,14.07L12,21.07L16.95,17.22L20.73,21L22,19.73L3.27,1M19.36,10.27L21,9L12,2L9.09,4.27L16.96,12.15L19.36,10.27M19.81,15L21,14.07L19.57,12.64L18.38,13.56L19.81,15Z" Fill="Black" />
+								</Canvas>
+							</Viewbox>
+						</Fluent:Button.Icon>
+						<Fluent:Button.LargeIcon>
+							<Viewbox Width="32" Height="32">
+								<Canvas Width="24" Height="24">
+									<Path Data="M3.27,1L2,2.27L6.22,6.5L3,9L4.63,10.27L12,16L14.1,14.37L15.53,15.8L12,18.54L4.63,12.81L3,14.07L12,21.07L16.95,17.22L20.73,21L22,19.73L3.27,1M19.36,10.27L21,9L12,2L9.09,4.27L16.96,12.15L19.36,10.27M19.81,15L21,14.07L19.57,12.64L18.38,13.56L19.81,15Z" Fill="Black" />
+								</Canvas>
+							</Viewbox>
+						</Fluent:Button.LargeIcon>
+					</Fluent:Button>
+
+				</Fluent:RibbonGroupBox>
+
+				<Fluent:RibbonGroupBox  KeyTip="T10"
+                                       Header="Options"
+                                       CanAddToQuickAccessToolBar="False"
+                                       IsLauncherVisible="False">
+
+					<Fluent:DropDownButton Header="Color" SizeDefinition="Large" >
+						<Fluent:DropDownButton.Icon>
+							<Viewbox Width="16" Height="16">
+								<Canvas Width="24" Height="24">
+									<Path Data="M19,11.5C19,11.5 17,13.67 17,15A2,2 0 0,0 19,17A2,2 0 0,0 21,15C21,13.67 19,11.5 19,11.5M5.21,10L10,5.21L14.79,10M16.56,8.94L7.62,0L6.21,1.41L8.59,3.79L3.44,8.94C2.85,9.5 2.85,10.47 3.44,11.06L8.94,16.56C9.23,16.85 9.62,17 10,17C10.38,17 10.77,16.85 11.06,16.56L16.56,11.06C17.15,10.47 17.15,9.5 16.56,8.94Z" Fill="Black" />
+								</Canvas>
+							</Viewbox>
+						</Fluent:DropDownButton.Icon>
+						<Fluent:DropDownButton.LargeIcon>
+							<Viewbox Width="32" Height="32">
+								<Canvas Width="24" Height="24">
+									<Path Data="M19,11.5C19,11.5 17,13.67 17,15A2,2 0 0,0 19,17A2,2 0 0,0 21,15C21,13.67 19,11.5 19,11.5M5.21,10L10,5.21L14.79,10M16.56,8.94L7.62,0L6.21,1.41L8.59,3.79L3.44,8.94C2.85,9.5 2.85,10.47 3.44,11.06L8.94,16.56C9.23,16.85 9.62,17 10,17C10.38,17 10.77,16.85 11.06,16.56L16.56,11.06C17.15,10.47 17.15,9.5 16.56,8.94Z" Fill="Black" />
+								</Canvas>
+							</Viewbox>
+						</Fluent:DropDownButton.LargeIcon>
+						
+					</Fluent:DropDownButton>
+
+					<Fluent:Button Header="Style" SizeDefinition="Large" 
+										 Command="{Binding LayerCommand}" CommandParameter="Style" >
+						<Fluent:Button.Icon>
+							<Viewbox Width="16" Height="16">
+								<Canvas Width="24" Height="24">
+									<Path Data="M12,20L7,22L12,11L17,22L12,20M8,2H16V5H22V7H16V10H8V7H2V5H8V2M10,4V8H14V4H10Z" Fill="Black" />
+								</Canvas>
+							</Viewbox>
+						</Fluent:Button.Icon>
+						<Fluent:Button.LargeIcon>
+							<Viewbox Width="32" Height="32">
+								<Canvas Width="24" Height="24">
+									<Path Data="M12,20L7,22L12,11L17,22L12,20M8,2H16V5H22V7H16V10H8V7H2V5H8V2M10,4V8H14V4H10Z" Fill="Black" />
+								</Canvas>
+							</Viewbox>
+						</Fluent:Button.LargeIcon>
+					</Fluent:Button>
+
+					<Fluent:DropDownButton Header="Thumbs" SizeDefinition="Large" >
+						<Fluent:DropDownButton.Icon>
+							<Viewbox Width="16" Height="16">
+								<Canvas Width="24" Height="24">
+									<Path Data="M14,6L10.25,11L13.1,14.8L11.5,16C9.81,13.75 7,10 7,10L1,18H23L14,6Z" Fill="Black" />
+								</Canvas>
+							</Viewbox>
+						</Fluent:DropDownButton.Icon>
+						<Fluent:DropDownButton.LargeIcon>
+							<Viewbox Width="32" Height="32">
+								<Canvas Width="24" Height="24">
+									<Path Data="M14,6L10.25,11L13.1,14.8L11.5,16C9.81,13.75 7,10 7,10L1,18H23L14,6Z" Fill="Black" />
+								</Canvas>
+							</Viewbox>
+						</Fluent:DropDownButton.LargeIcon>
+					</Fluent:DropDownButton>
+
+				</Fluent:RibbonGroupBox>
+
+			</Fluent:RibbonTabItem>
+
+		</Fluent:Ribbon>
+	</Grid>
+</UserControl>
