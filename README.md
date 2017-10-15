@@ -12,3 +12,12 @@ Currently in a very beta stage, it will contains :
 Will perhaps have more complex drawing documents, layers, snap functions.
 
 A technical article will be published on codeproject as soon as possible.
+
+Application
+![Application](https://github.com/TheCamel/ArchX/blob/master/archX1.png)	
+
+Classes
+![Classes](https://github.com/TheCamel/ArchX/blob/master/arch-x-appli-diagram.png)
+
+Controls
+![Controls](https://github.com/TheCamel/ArchX/blob/master/arch-x-controls-diagram.png)
